@@ -1,0 +1,81 @@
+show system info                   //shows the uptime, serial number, ...
+show system environmentals         //e.g. power supply failures
+show ntp
+show session info                  //packet rate, number of sessions, fastpath active, etc.
+show session id <id>
+show interface { all | <interface-name> }
+show routing route                 //routing table (all routes)
+show routing fib                   //forwarding table (only used routes)
+show routing protocol <protocol> ...
+show arp { all | <interface-name> }
+show neighbor interface { all | <interface-name> }   //IPv6 neighbor cache
+show mac all                       //only with layer 2 interfaces
+show jobs all
+show jobs id <id>
+show running resource-monitor      //resource statistics
+show system resource follow        //="top", CPU usage and processes
+show system disk-space             //="df -h"
+debug software restart <service>   //Restart a certain process
+request restart system             //Reboot the whole device
+
+show system statistics application
+show system statistics session
+
+find command
+find command keyword <word-to-search-for>
+
+ping host 8.8.8.8
+
+traceroute host 8.8.8.8
+
+ping host google.com
+
+tail follow yes mp-log 
+
+
+
+show session all 
+
+
+tcpdump snaplen 0 filter "port 53"
+view-pcap follow yes mgmt-pcap mgmt.pcap
+scp export mgmt-pcap from mgmt.pcap to <username@host:path>
+
+
+
+show session info
+
+
+
+show log traffic show-tracker equal yes
+
+
+set network interface ethernet ethernet1/1 layer3 ip 172.16.1.2/24
+set network interface ethernet ethernet1/1 layer3 untagged-sub-interface no
+set network interface ethernet ethernet1/1 layer3 interface-management-profile ping
+set network interface ethernet ethernet1/1 link-speed auto
+set network interface ethernet ethernet1/1 link-duplex auto
+set network interface ethernet ethernet1/1 link-state auto
+
+ show netstat
+
+
+
+configure
+set deviceconfig system ip-address 192.168.1.5 netmask 255.255.255.0 default-gateway 192.168.1.1 dns-setting servers primary 8.8.8.8
+commit
+
+
+configure
+set deviceconfig system type dhcp-client send-hostname yes send-client-id no accept-dhcp-domain no accept-dhcp-hostname no
+commit
+
+request system private-data-reset
+
+
+debug dataplane packet-diag set log feature flow basic
+debug dataplane packet-diag set log feature ctd basic
+debug dataplane packet-diag set clear log log
+debug dataplane packet-diag set filter on
+debug dataplane packet-diag set filter on
+

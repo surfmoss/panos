@@ -1,53 +1,51 @@
-show system info                   //shows the uptime, serial number, ...
-show system environmentals         //e.g. power supply failures
-show ntp
-show session info                  //packet rate, number of sessions, fastpath active, etc.
-show session id <id>
-show interface { all | <interface-name> }
-show routing route                 //routing table (all routes)
-show routing fib                   //forwarding table (only used routes)
-show routing protocol <protocol> ...
-show arp { all | <interface-name> }
-show neighbor interface { all | <interface-name> }   //IPv6 neighbor cache
-show mac all                       //only with layer 2 interfaces
-show jobs all
-show jobs id <id>
-show running resource-monitor      //resource statistics
-show system resource follow        //="top", CPU usage and processes
-show system disk-space             //="df -h"
-debug software restart <service>   //Restart a certain process
-request restart system             //Reboot the whole device
 
-show system statistics application
-show system statistics session
-
-find command
-find command keyword <word-to-search-for>
-
+show system info                   # shows the uptime, serial number, ...
+show system environmentals         # psu/fans
+show ntp                           # sync
+show session info                  # sessions supported, active sessions
+show session id <id>               # specific session
+show interface                     # configured details
+show routing route                 # routing table 
+show routing fib                   # forwarding table used routes
+show routing protocol 
+show arp
+show neighbor interface 
+show mac all                       
+show jobs all                      # FW Jobs i.e commits, download
+show jobs id <id>                  # specific job detail
+show running resource-monitor      # resource util
+show system resource follow        # top view
+show system disk-space             # current disk usage
+debug software restart <service>   # Restart a certain process
+request restart system             # Reboot the fw
+show system statistics application # apps running
+show system statistics session     # device up
+find command keyword               # show cmds with keyword
 ping host 8.8.8.8
-
 traceroute host 8.8.8.8
+ping host google.com               # ping and resolve
 
-ping host google.com
-
-tail follow yes mp-log 
-
-
-
-show session all 
-
-
-tcpdump snaplen 0 filter "port 53"
-view-pcap follow yes mgmt-pcap mgmt.pcap
-scp export mgmt-pcap from mgmt.pcap to <username@host:path>
+tail follow yes mp-log             # view logs
+tail follow yes mp-log authd.log
+tail follow yes mp-log configd.log
+tail follow yes mp-log ehmon.log
+tail follow yes mp-log nf_conntrack.log
+tail follow yes mp-log pan_ifmgr.log
+tail follow yes mp-log snmpd.log
+tail follow yes mp-log sysdagent.log
 
 
-
+show session 
 show session info
-
-
+show session all filter from LAN
+show session all filter state discard
 
 show log traffic show-tracker equal yes
+show log traffic action equal reset-both
+
+tcpdump snaplen 0 
+view-pcap follow yes mgmt-pcap mgmt.pcap
+scp export mgmt-pcap from mgmt.pcap to <username@host:path>
 
 
 set network interface ethernet ethernet1/1 layer3 ip 172.16.1.2/24
@@ -57,8 +55,7 @@ set network interface ethernet ethernet1/1 link-speed auto
 set network interface ethernet ethernet1/1 link-duplex auto
 set network interface ethernet ethernet1/1 link-state auto
 
- show netstat
-
+show netstat
 
 
 configure
